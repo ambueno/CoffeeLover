@@ -48,6 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
   static const IconData refresh = IconData(0xe514, fontFamily: 'MaterialIcons');
   static const _buttonWidth = 350.0;
   static const _buttonHeight = 35.0;
+  static const _currentCaffeineConsumption = 0.0;
   static const _betachildHealthyCaffeineConsumption = 100.0;
   static const _sigmaChildHealthyCaffeineConsumption  = 300.0;
   static const _sensibleHealthyCaffeineConsumption = 100.0;
@@ -76,22 +77,14 @@ class _MyHomePageState extends State<MyHomePage> {
   ];
 
   final _whoAmIMap = {
-  'Criança Beta' : String _betachildHealthyCaffeineConsumption() =>
-  _calculateCaffeineConsumption > _betachildHealthyCaffeineConsumption ? "Dá uma maneirada né kid" : "Titia Cíntia Aprova",
-  'Criança Sigma' : String _sigmaChildHealthyCaffeineConsumption() =>
-      double.parse(_caffeineMgController.text) > _sigmaChildHealthyCaffeineConsumption ? "É sigma, mas ainda é kid, dá uma maneirada" : "Titia Cíntia Aprova, mas tá quase virando beta",
-  'Não trabalha e não tem problema na vida (aka sensível || beta)' : String _sensibleHealthyCaffeineConsumption() =>
-      double.parse(_caffeineMgController.text) > _sensibleHealthyCaffeineConsumption ? "Tá bebendo café demais para um vagabundo" : "Sai dessa mamatinha ai, vira gente",
-  'Gestanes e Lactantes' : String _pregnantHealthyCaffeineConsumption() =>
-      double.parse(_caffeineMgController.text) > _pregnantHealthyCaffeineConsumption ? "Manera aí, gravidinha. A criança precisa ficar estranha que nem a Amanda" : "Cuidando do filhão, boa",
-  'Dev Explorado' : String _devHealthyCaffeineConsumption() =>
-      double.parse(_caffeineMgController.text) > _devHealthyCaffeineConsumption ? "Bug tá foda né amigão" : "Já é senior, nem coda mais",
-  'Sigma (Fe)male Grindset' : String _sigmaHealthyCaffeineConsumption() =>
-      double.parse(_caffeineMgController.text) > _sigmaHealthyCaffeineConsumption ? "Se for legday vai conhecer o zyzz" : "O grindset tá off",
-  'Stronda' : String _strondaHealthyCaffeineConsumption() =>
-      double.parse(_caffeineMgController.text) > _strondaHealthyCaffeineConsumption ? "VAI GOSTAR DE CAFÉ É AGORA" : "SEU FRANGO",
-  'Amanda :)' : String _amandaHealthyCaffeineConsumption() =>
-      double.parse(_caffeineMgController.text) > _amandaHealthyCaffeineConsumption ? "HAHAHA O CÉU É O LIMITE" : "F, MIMIU",
+  'Criança Beta' : () => _currentCaffeineConsumption > _betachildHealthyCaffeineConsumption ? "Dá uma maneirada né kid" : "Titia Cíntia Aprova",
+  'Criança Sigma' : () => _currentCaffeineConsumption > _sigmaChildHealthyCaffeineConsumption ? "É sigma, mas ainda é kid, dá uma maneirada" : "Titia Cíntia Aprova, mas tá quase virando beta",
+  'Não trabalha e não tem problema na vida (aka sensível || beta)' : () => _currentCaffeineConsumption > _sensibleHealthyCaffeineConsumption ? "Tá bebendo café demais para um vagabundo" : "Sai dessa mamatinha ai, vira gente",
+  'Gestanes e Lactantes' : () => _currentCaffeineConsumption > _pregnantHealthyCaffeineConsumption ? "Manera aí, gravidinha. A criança precisa ficar estranha que nem a Amanda" : "Cuidando do filhão, boa",
+  'Dev Explorado' : () => _currentCaffeineConsumption > _devHealthyCaffeineConsumption ? "Bug tá foda né amigão" : "Já é senior, nem coda mais",
+  'Sigma (Fe)male Grindset' : () => _currentCaffeineConsumption > _sigmaHealthyCaffeineConsumption ? "Se for legday vai conhecer o zyzz" : "O grindset tá off",
+  'Stronda' : () => _currentCaffeineConsumption > _strondaHealthyCaffeineConsumption ? "VAI GOSTAR DE CAFÉ É AGORA" : "SEU FRANGO",
+  'Amanda :)' : () => _currentCaffeineConsumption > _amandaHealthyCaffeineConsumption ? "HAHAHA O CÉU É O LIMITE" : "F, MIMIU",
 };
 
   // functions
